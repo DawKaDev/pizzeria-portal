@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pizzeria Mamma Mia</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="vendor/range-slider.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css">
+  <link rel="stylesheet" href="vendor/bootstrap-grid.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__wrapper d-flex flex-wrap">
+                <div class="logo col-12 col-sm-7 justify-content-center">
+                    <h1 class="logo__title mx-auto mx-sm-0 d-table"><span>Mamma</span>Mia!</h1>
+                    <h2 class="logo__subtitle mx-auto mx-sm-0 d-table">the best homemade Italian food</h2>
+                </div>
+                
+                <div class="col-12 col-sm-5 pt-5">
+                <div id="cart" class="cart col">
+                    <div class="cart__summary">
+                        <span class="cart__total-number">0</span>
+                        <span class="cart__total-price">Total price: $<strong>0</strong></span>
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-shopping-cart cart__icon"></i>
+                    </div>
+                    <div class="cart__content">
+                        <form class="cart__order">
+                            <ul class="cart__order-summary no-spacing">
+                            </ul>
+                            <ul class="cart__order-price">
+                                <li class="cart__order-subtotal">
+                                    <span class="cart__order-price-name">Subtotal:</span>
+                                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                                </li>
+                                <li class="cart__order-delivery">
+                                    <span class="cart__order-price-name">Delivery:</span>
+                                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                                </li>
+                                <li class="cart__order-total">
+                                    <span class="cart__order-price-name"><strong>Total:</strong></span>
+                                    <span class="cart__order-price-sum">$<strong>0</strong></span>
+                                </li>
+                            </ul>
+                            <div class="cart__order-confirmation">
+                                <input type="tel" name="phone" placeholder="Your phone" minlength="9" required>
+                                <input type="text" name="address" placeholder="Your address" minlength="3" required>
+                                <button type="submit" class="btn-secondary">Order</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="main-nav col p-0 justify-content-between justify-content-sm-start">
+                <a href="#home" class="mr-0 mr-sm-4">Home</a>
+                <a href="#order" class="mr-0 mr-sm-4">Order</a>
+                <a href="#booking" class="mr-0 mr-sm-4">Booking</a>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="pages">
+        <section id="home">
+            <div class="homepage container">
+                <div class="home-wrapper">
+                    <div class="menu-wrapper nav d-flex flex-wrap">
+                        <div class="col-12 col-sm-6 pr-sm-2 px-0">
+                            <a class="link-box" href="#order">
+                                <img src="images/gallery/pizza-1.jpg">
+                                <p class="title">order online</p>
+                                <p class="subtitle">Delicious food delivered to your door</p>
+                            </a>
+                        </div>
+                        <div class="col-12 col-sm-6 pl-sm-2 px-0">
+                            <a class="link-box" href="#booking">
+                                <img src="images/gallery/pizza-2.jpg">
+                                <p class="title">book a table</p>
+                                <p class="subtitle">See you soon in place</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="homepage-wrapper"></div>
+                </div>
+            </div>
+        </section>
+        <section id="order">
+            <div id="product-list" class="product-list container"></div>
+        </section>
+        <section id="booking">
+            <div class="booking-wrapper container"></div>
+        </section>
+    </div>
+    
+    <script id="template-home-page" type="text/x-handlebars-template">
+        <div>
+            <div class="opening-block">
+                <p class="title">Opening hours:</p>
+                <p class="hours">TUE-SUN, 12pm - 12am</p>
+            </div>
+            <div class="slider-container">  
+                {{#each slide }}   
+                <div>              
+                <div class="slide flex-wrap d-flex">
+                    <div class="slide__image col-12 col-sm-5 col-md-4 px-0">
+                        <img src="{{{ image }}}">
+                    </div>
+                    <div class="slide__content col-12 col-sm-7 col-md-8 px-0 pl-sm-5">
+                        <h3 class="slide__title">{{ title }}</h3>
+                        <p class="slide__text">{{ content }}</p>
+                        <p class="slide__author">- {{ author }}</p>
+                    </div>
+                </div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="gallery">
+                {{#each images }}
+                <div class="col-12 col-sm-6 col-md-4 p-2">
+                    <div class="gallery__image">
+                        <img src="{{{this}}}">
+                        <div class="gallery__buttons">
+                            <i class="fa fa-heart"> </i>
+                            <i class="fa fa-share-alt"> </i>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            <p><a href="#">View more on Instagram</a></p>
+        </div>
+    </script>
+
+    <script id="template-booking-widget" type="text/x-handlebars-template">
+        <div class="booking-widget">
+            <h2 class="page__title no-spacing">Book a table</h2>
+            <form class="booking-form">
+                <div class="time-picker d-flex flex-wrap row">
+                    <div class="date-picker col-12 col-sm-6 mb-4 mb-sm-0 px-0">
+                        <label class="booking-option-title">Pick a date</label>
+                        <input type="text" name="date">
+                    </div>
+                    <div class="hour-picker range-slider col-12 col-sm-6 px-0">
+                        <div class="output"></div>
+                        <label class="booking-option-title">Pick a time</label>
+                        <input type="range" name="hour" value="12" min="12" max="24" step="0.5">
+                    </div>
+                </div>
+                <div class="floor-plan">
+                    <div class="object entry">entry</div>
+                    <div class="object bar">bar</div>
+                    <div class="object table" data-table="1">table-1</div>
+                    <div class="object table table--round" data-table="2">table-2</div>
+                    <div class="object table" data-table="3">table-3</div>
+                </div>
+                <div class="booking-options"> <!-- options -->
+                    <div class="col-6 col-md-4 px-0">
+                        <label class="booking-option-title"> <!-- option-row -->
+                        People
+                        <div class="widget-amount people-amount" data-min="1" data-max="4"> <!-- widget-amount -->
+                            <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
+                            <input class="amount" type="text" name="people" value="1">
+                            <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
+                        </div>
+                        </label>
+                    </div>
+                    <div class="col-6 col-md-4 px-0">
+                        <label class="booking-option-title"> <!-- option-row -->
+                        Hours
+                        <div class="widget-amount hours-amount" data-min="8" data-max="20"> <!-- widget-amount -->
+                            <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
+                            <input class="amount" type="text" name="hours" value="1">
+                            <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
+                        </div>
+                        </label>
+                    </div>
+                    <div class="col-12 col-md-4 px-0"> <!-- option-row -->
+                        <span class="booking-option-title">Starters</span>
+                        <div class="checkbox"> <!-- checkbox -->
+                            <label>
+                                <input type="checkbox" name="starter" value="water">
+                                <span class="checkbox__checkmark"></span>
+                                Water
+                            </label>
+                        </div>
+                        <div class="checkbox"> <!-- checkbox -->
+                            <label>
+                                <input type="checkbox" name="starter" value="bread">
+                                <span class="checkbox__checkmark"></span>
+                                Bread
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-confirmation d-flex flex-column flex-md-row">
+                    <input class="col mb-2 mb-md-0 mr-0 mr-md-2" type="tel" name="phone" placeholder="Your phone" minlength="9" required>
+                    <input class="col mb-2 mb-md-0 mr-0 mr-md-2" type="text" name="address" placeholder="Your address" minlength="8" required>
+                    <button type="submit" class="btn-secondary">Book table</button>
+                </div>
+            </form>
+        </div>
+    </script>
+
+    <script id="template-cart-product" type="text/x-handlebars-template">
+        <li>
+            <div class="widget-amount"> <!-- widget-amount -->
+                <a class="btn-quantity btn-quantity--lt" href="#less"><i class="fas fa-minus"></i></a>
+                <input class="amount" type="text" value="{{ amount }}">
+                <a class="btn-quantity btn-quantity--lt" href="#more"><i class="fas fa-plus"></i></a>
+            </div>
+            <div class="cart__product">
+                <div class="cart__product-header">
+                    <span>{{ name }}</span>
+                    <span>$<strong class="cart__product-price">{{ price }}</strong></span>
+                </div>
+                <ul class="cart__product-details no-spacing">
+                    {{#each params}}
+                    <li>
+                        <span class="cart__product-details-label">{{ label }}</span>
+                        <span>{{#joinValues options}}, {{/joinValues}}</span>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <ul class="cart__action-buttons no-spacing">
+                <li><a href="#edit">Edit<i class="fas fa-pencil-alt"></i></a></li>
+                <li><a href="#remove">Remove<i class="fas fa-trash-alt"></i></a></li>
+            </ul>
+        </li>
+    </script>
+
+    <script id="template-menu-product" type="text/x-handlebars-template">
+      <article class="product"> <!-- product -->
+
+          <header class="product__header">
+            <h3 class="product__name no-spacing">{{ name }} <i class="fas fa-chevron-down product__icon"></i></h3>
+            <p class="product__base-price no-spacing">${{ price }}</p>
+          </header>
+          <div class="product__description"> <!-- description -->
+            <p>{{{ description }}}</p>
+          </div> <!-- .description -->
+          <div class="product__wrapper"> <!-- details -->
+            <form class="product__order col-12 col-sm-6 order-1 order-sm-0">
+              <ul class="product__params"> <!-- params -->
+                {{#each params as |param paramId| }}
+                {{#ifEquals type "checkboxes"}}
+                <li> <!-- checkboxes -->
+                  <h3 class="product__params-title">{{{ label }}}</h3>
+                  {{#each options}}
+                  <div class="checkbox"> <!-- checkbox -->
+                    <label>
+                      <input type="checkbox" name="{{ paramId }}" value="{{ @key }}" id="{{ @key }}" {{#if default}}checked{{/if}}>
+                      <span class="checkbox__checkmark"></span>
+                      {{{ label }}} (${{{ price }}})
+                    </label>
+                  </div>
+                  {{/each}}
+                </li>
+                {{/ifEquals}}
+                {{#ifEquals type "radios"}}
+                <li> <!-- radios -->
+                  <h3 class="product__params-title">{{{ label }}}</h3>
+                  {{#each options}}
+                  <div class="checkbox checkbox--round"> <!-- radio -->
+                    <label>
+                      {{{ label }}} (${{{ price }}})
+                      <input type="radio" name="{{ paramId }}" value="{{ @key }}" id="{{ @key }}" {{#if default}}checked{{/if}}>
+                      <span class="checkbox__checkmark"></span>
+                    </label>
+                  </div>
+                  {{/each}}
+                </li>
+                {{/ifEquals}}
+                {{#ifEquals type "select"}}
+                <li> <!-- select -->
+                  <h3 class="product__params-title">{{{ label }}}</h3>
+                  <select name="{{ paramId }}">
+                    {{#each options}}
+                    <option value="{{ @key }}" {{#if default}}selected{{/if}}>{{{ label }}} (${{{ price }}})</option>
+                    {{/each}}
+                  </select>
+                </li>
+                {{/ifEquals}}
+                {{/each}}
+              </ul>
+              <div class="amount"> <!-- controls -->
+                <div class="widget-amount" data-min="{{ amount.min }}" data-max="{{ amount.max }}"> <!-- widget-amount -->
+                  <h3 class="product__params-title">Select quantity</h3>
+                  <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
+                  <input type="text" class="amount" >
+                  <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
+                </div>
+                <p class="product__total-price">
+                  Total: $<span class="price">{{{ price }}}</span>
+                </p>
+                <div> <!-- add-to-cart -->
+                  <a class="btn-primary" href="#add-to-cart">Add to cart</a>
+                </div>
+              </div>
+            </form>
+            <div class="product__images {{ class }} col-12 col-sm-6 order-0 order-sm-1"> <!-- images -->
+              {{#each images}}
+              {{{ this }}}
+              {{/each}}
+            </div>
+          </div>
+
+      </article> <!-- .product -->
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="vendor/range-slider.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <script src="js/app.js" type="module"></script>
+
+</body>
+</html>
