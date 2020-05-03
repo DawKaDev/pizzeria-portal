@@ -6,8 +6,7 @@ const Events = (props) => {
   const id = props.match.params.id;
   return (
     <div className={styles.component}>
-      <h2>Events View</h2>
-      {id}
+      <h2 className={styles.title}>Event <span>{id}</span></h2>
     </div>
   );
 };

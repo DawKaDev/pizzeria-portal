@@ -6,8 +6,7 @@ const Order = (props) => {
   const id = props.match.params.id;
   return (
     <div className={styles.component}>
-      <h2>Order View</h2>
-      {id}
+      <h2 className={styles.title}>Order <span>{id}</span></h2>
     </div>
   );
 };

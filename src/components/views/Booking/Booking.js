@@ -6,8 +6,7 @@ const Booking = (props) => {
   const id = props.match.params.id;
   return (
     <div className={styles.component}>
-      <h2>Booking View</h2>
-      {id}
+      <h2 className={styles.title}>Booking <span>{id}</span></h2>
     </div>
   );
 };

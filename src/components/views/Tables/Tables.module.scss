@@ -7,3 +7,19 @@
 .link {
   margin: 0 15px 0 0;
 }
+
+.title {
+  text-transform: capitalize;
+  text-align: left;
+  margin:30px 0 15px 0;
+  font-weight: 100;
+  font-size: 32px;
+
+  span {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 100;
+    padding: 15px 0 0 0;
+    color: #19a540;
+  }
+}
