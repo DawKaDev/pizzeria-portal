@@ -2,17 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Order.module.scss';
 
-const Order = (props) => {
-  const id = props.match.params.id;
-  return (
-    <div className={styles.component}>
-      <h2 className={styles.title}>Order <span>{id}</span></h2>
-    </div>
-  );
-};
+class Order extends React.Component {
+  static propTypes = {
+    match: PropTypes.object,
+    order: PropTypes.func,
+    id: PropTypes.string,
+  };
+ 
+  componentDidMount(){
+    const { order } = this.props;
+    order();
+  }
 
-Order.propTypes = {
-  match: PropTypes.object,
-};
+  render(){
+    const { id } = this.props;
+    return (
+      <div className={styles.component}>
+        <h2 className={styles.title}>Order <span>{id}</span></h2>
+      </div>
+    );
+  }
+}
 
 export default Order;

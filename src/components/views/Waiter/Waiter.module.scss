@@ -19,3 +19,8 @@
     color: #19a540;
   }
 }
+
+.free {
+  //background: lighten($color: #19a540, $amount: 50);
+  border-left: 10px solid lighten($color: #19a540, $amount: 50);
+}

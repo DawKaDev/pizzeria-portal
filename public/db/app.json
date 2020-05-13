@@ -220,7 +220,36 @@
       }
     }
   ],
-  "order": [],
+  "order": [
+      {
+        "id": 234,
+        "address": "wqwqwqw",
+        "deliveryFee":20,
+        "phone":"111111111",
+        "products":[
+            {
+                "amount":1,
+                "id":"breakfast",
+                "params":
+                {
+                    "coffee":
+                    {
+                        "label":"Coffee type",
+                        "options":
+                        {
+                            "latte":"Latte"
+                        }
+                    }
+                },
+                "price":9,
+                "priceSingle":9
+            }
+        ],
+        "subtotalPrice":9,
+        "totalNumber":1,
+        "totalPrice":29
+    }
+  ],
   "event": [
     {
       "id": 1,
@@ -301,5 +330,13 @@
       "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus pariatur autem atque quam assumenda quibusda?",
       "author": "Drake White"
     }
+  ],
+  "tables": [
+    { "id": "1", "loc": "middle left", "status": "free", "order": null },
+    { "id": "2", "loc": "middle", "status": "thinking", "order": null },
+    { "id": "3", "loc": "middle right", "status": "ordered", "order": 123 },
+    { "id": "4", "loc": "middle back", "status": "prepared", "order": 234 },
+    { "id": "5", "loc": "middle front", "status": "delivered", "order": 345 },
+    { "id": "6", "loc": "front left", "status": "paid", "order": 456 }
   ]
 }
